@@ -1,0 +1,102 @@
+Metadata-Version: 2.4
+Name: multi-source-candidate-transformer
+Version: 0.1.0
+Summary: Multi-source candidate data transformer for CSV and resume PDF inputs.
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: pdfplumber>=0.11.0
+Requires-Dist: phonenumbers>=8.13.0
+Requires-Dist: pydantic>=2.6.0
+Requires-Dist: pycountry>=23.12.0
+Requires-Dist: python-dateutil>=2.9.0
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0.0; extra == "dev"
+Requires-Dist: reportlab>=4.0.0; extra == "dev"
+
+# Multi-Source Candidate Data Transformer
+
+Production-style Python project for the Eightfold Engineering Intern assignment. It ingests a structured recruiter CSV and an unstructured resume PDF, normalizes candidate data, merges source records into a validated canonical profile, and optionally projects that profile into a runtime-configured output shape.
+
+## Installation
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -e ".[dev]"
+```
+
+Generate the sample resume PDF:
+
+```bash
+python scripts/create_sample_resume_pdf.py
+```
+
+## Running
+
+Default canonical output:
+
+```bash
+python main.py \
+  --csv samples/recruiter_sample.csv \
+  --resume samples/resume_sample.pdf \
+  --output output/default_output.json
+```
+
+Custom projection:
+
+```bash
+python main.py \
+  --csv samples/recruiter_sample.csv \
+  --resume samples/resume_sample.pdf \
+  --config samples/config_custom.json \
+  --output output/custom_output.json
+```
+
+Run tests:
+
+```bash
+pytest
+```
+
+## Folder Structure
+
+```text
+candidate_transformer/
+  cli.py                 CLI surface
+  confidence.py          confidence scoring policy
+  merge.py               deterministic conflict resolution
+  models.py              Pydantic canonical and config schemas
+  normalizers.py         phones, dates, countries, skills
+  pipeline.py            end-to-end orchestration
+  parsers/
+    csv_parser.py        recruiter CSV adapter
+    resume_pdf_parser.py resume PDF adapter
+samples/                 sample CSV and projection config
+scripts/                 helper to generate sample PDF
+tests/                   unit tests
+docs/technical_design.md one-page design write-up
+```
+
+## Design Decisions
+
+- Parsers emit `RawCandidateRecord`, keeping source-specific logic out of merge and projection.
+- The canonical `Candidate` Pydantic model is the stable internal contract.
+- Resume values win for descriptive fields; CSV values still corroborate and contribute provenance.
+- Contact fields are normalized and deduplicated, never guessed.
+- Projection is isolated from canonical schema so output requirements can change without changing core data logic.
+- Failures return empty records or error JSON instead of crashing the CLI.
+
+## Assumptions
+
+- Default phone region is `US`, configurable with `--default-region`.
+- Resume parsing uses regex and section heuristics, not machine learning.
+- Confidence is deterministic: agreement is high, one clean source is medium, malformed extraction is low.
+- Empty and malformed sources are skipped; missing values stay missing.
+
+## Future Improvements
+
+- Add parser adapters for GitHub, LinkedIn, ATS JSON, and recruiter notes.
+- Improve resume experience parsing with layout-aware sections and date range extraction.
+- Add candidate matching across batches instead of one merged profile per run.
+- Add JSON Schema export for projected outputs.
+- Add structured logging and metrics for large batch runs.
