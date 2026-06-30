@@ -1,0 +1,170 @@
+{
+  "candidate": {
+    "candidate_id": "5c707778da2a3424",
+    "education": [],
+    "emails": [
+      "ananya.rao@example.com"
+    ],
+    "experience": [
+      {
+        "company": "Eightfold Labs",
+        "confidence": 0.65,
+        "end": null,
+        "source": "csv",
+        "start": null,
+        "summary": null,
+        "title": "Senior Data Engineer"
+      }
+    ],
+    "full_name": "Ananya Rao",
+    "headline": "Senior Data Engineer",
+    "links": {
+      "github": "https://github.com/ananyarao",
+      "linkedin": "https://linkedin.com/in/ananyarao",
+      "other": [],
+      "portfolio": null
+    },
+    "location": {
+      "city": "San Francisco",
+      "country": "US",
+      "region": "CA"
+    },
+    "overall_confidence": 0.65,
+    "phones": [
+      "+14155550134"
+    ],
+    "provenance": [
+      {
+        "confidence": 0.65,
+        "field": "emails",
+        "method": "normalized and deduplicated",
+        "source": "csv",
+        "value": "ananya.rao@example.com"
+      },
+      {
+        "confidence": 0.65,
+        "field": "phones",
+        "method": "E.164 normalization",
+        "source": "csv",
+        "value": "+14155550134"
+      },
+      {
+        "confidence": 0.65,
+        "field": "full_name",
+        "method": "direct extraction",
+        "source": "csv",
+        "value": "Ananya Rao"
+      },
+      {
+        "confidence": 0.65,
+        "field": "headline",
+        "method": "direct extraction",
+        "source": "csv",
+        "value": "Senior Data Engineer"
+      },
+      {
+        "confidence": 0.65,
+        "field": "years_experience",
+        "method": "direct extraction",
+        "source": "csv",
+        "value": 6.0
+      },
+      {
+        "confidence": 0.65,
+        "field": "location",
+        "method": "split city/region/country and ISO country normalization",
+        "source": "csv",
+        "value": "San Francisco, CA, United States"
+      },
+      {
+        "confidence": 0.65,
+        "field": "links.linkedin",
+        "method": "preferred non-empty link",
+        "source": "csv",
+        "value": "https://linkedin.com/in/ananyarao"
+      },
+      {
+        "confidence": 0.65,
+        "field": "links.github",
+        "method": "preferred non-empty link",
+        "source": "csv",
+        "value": "https://github.com/ananyarao"
+      },
+      {
+        "confidence": 0.65,
+        "field": "skills",
+        "method": "canonical skill normalization",
+        "source": "csv",
+        "value": "Python"
+      },
+      {
+        "confidence": 0.65,
+        "field": "skills",
+        "method": "canonical skill normalization",
+        "source": "csv",
+        "value": "SQL"
+      },
+      {
+        "confidence": 0.65,
+        "field": "skills",
+        "method": "canonical skill normalization",
+        "source": "csv",
+        "value": "Machine Learning"
+      },
+      {
+        "confidence": 0.65,
+        "field": "skills",
+        "method": "canonical skill normalization",
+        "source": "csv",
+        "value": "PostgreSQL"
+      },
+      {
+        "confidence": 0.65,
+        "field": "experience",
+        "method": "latest/preferred source order",
+        "source": "csv",
+        "value": {
+          "company": "Eightfold Labs",
+          "confidence": 0.65,
+          "end": null,
+          "source": "csv",
+          "start": null,
+          "summary": null,
+          "title": "Senior Data Engineer"
+        }
+      }
+    ],
+    "skills": [
+      {
+        "confidence": 0.65,
+        "name": "Machine Learning",
+        "sources": [
+          "csv"
+        ]
+      },
+      {
+        "confidence": 0.65,
+        "name": "PostgreSQL",
+        "sources": [
+          "csv"
+        ]
+      },
+      {
+        "confidence": 0.65,
+        "name": "Python",
+        "sources": [
+          "csv"
+        ]
+      },
+      {
+        "confidence": 0.65,
+        "name": "SQL",
+        "sources": [
+          "csv"
+        ]
+      }
+    ],
+    "years_experience": 6.0
+  },
+  "error": "Missing required projection path: emails[99]"
+}

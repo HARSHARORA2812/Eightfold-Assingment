@@ -1,0 +1,8 @@
+{
+  "fields": [
+    { "path": "must_exist", "from": "emails[99]", "required": true }
+  ],
+  "include_confidence": true,
+  "include_provenance": true,
+  "on_missing": "error"
+}
