@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "multi-source-candidate-transformer"
+version = "0.1.0"
+description = "Multi-source candidate data transformer for CSV and resume PDF inputs."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "pdfplumber>=0.11.0",
+  "phonenumbers>=8.13.0",
+  "pydantic>=2.6.0",
+  "pycountry>=23.12.0",
+  "python-dateutil>=2.9.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0.0",
+  "reportlab>=4.0.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.setuptools.packages.find]
+include = ["candidate_transformer*"]
