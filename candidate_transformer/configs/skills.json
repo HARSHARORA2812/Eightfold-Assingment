@@ -1,0 +1,20 @@
+{
+  "aliases": {
+    "aws": "AWS",
+    "docker": "Docker",
+    "javascript": "JavaScript",
+    "js": "JavaScript",
+    "kubernetes": "Kubernetes",
+    "machine learning": "Machine Learning",
+    "ml": "Machine Learning",
+    "node": "Node.js",
+    "node.js": "Node.js",
+    "postgres": "PostgreSQL",
+    "postgresql": "PostgreSQL",
+    "py": "Python",
+    "python": "Python",
+    "react": "React",
+    "sql": "SQL",
+    "typescript": "TypeScript"
+  }
+}
